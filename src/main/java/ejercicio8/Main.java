@@ -1,0 +1,9 @@
+package ejercicio8;
+
+import java.io.File;
+
+public class Main {
+    public static void main(String[] args) {
+        new ProcesadorTextos();
+    }
+}

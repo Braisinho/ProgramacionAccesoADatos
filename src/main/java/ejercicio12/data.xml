@@ -1,0 +1,39 @@
+<messages>
+	<note id="501">
+		<to>Tove</to>
+		<from>Jani</from>
+		<heading>Lembrete</heading>
+		<body>Quedamos o venres</body>
+	</note>
+	<note id="502">
+		<to>Jani</to>
+		<from>Tove</from>
+		<heading>Re: Lembrete</heading>
+		<body>Por suposto</body>
+	</note>
+	<note id="503">
+		<to>Tove</to>
+		<from>Manolo</from>
+		<heading>Quedada</heading>
+		<body>Lembra que o vernes quedamos cos outros dous</body>
+	</note>
+	<note id="504">
+		<to>Maria</to>
+		<from>Marta</from>
+		<heading>Cea</heading>
+		<body>Para a semana cea?</body>
+	</note>
+	<note id="505">
+		<to>Marta</to>
+		<from>Maria</from>
+		<heading>Re: Cea</heading>
+		<body>Claro, coma sempre</body>
+	</note>
+	<note id="506">
+		<to>John</to>
+		<from>John</from>
+		<heading>Adxunto</heading>
+		<a/>
+		<body>Por se acaso</body>
+	</note>
+</messages>
