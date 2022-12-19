@@ -1,7 +1,9 @@
 package ejercicio20;
 
+import java.awt.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class XeradorBD {
@@ -72,16 +74,26 @@ public class XeradorBD {
     }
 
     private static void addMapBatch(){
+        PreparedStatement statement = null;
         for (int i = 0; i < 20; i++) {
             try {
-                PreparedStatement statement = ConnectionSQL.CONN.prepareStatement("INSERT into Mapa VALUES(?,?,?)");
+                statement = ConnectionSQL.CONN.prepareStatement("INSERT into Mapa VALUES(?,?,?)");
                 statement.setString(1,String.valueOf(i));
                 statement.setString(2, "Mapa :" + i);
                 statement.setInt(3,(int)(Math.random()*9+1));
                 statement.addBatch();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            if (statement != null) {
+                statement.executeBatch();
+            }
+            ConnectionSQL.CONN.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

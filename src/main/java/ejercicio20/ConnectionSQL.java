@@ -14,13 +14,15 @@ public class ConnectionSQL {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            con.setAutoCommit(false);
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
+
         return con;
     }
 
-    public static final Connection CONN = ConnectionSQL.getConexion();
+    public static final Connection CONN = getConexion();
 
     public static void closeConecction(){
         try {
