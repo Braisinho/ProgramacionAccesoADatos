@@ -33,6 +33,8 @@ create table Servidor_Mapa(
     primary key (Id_Servidor,Id_Mapa)
 );
 
+
+
 create table Persoaxe(
     Id char(9),
     Nome char(100),
@@ -50,8 +52,8 @@ create table Persoaxe(
 
 create table Zona(
     Id char(9),
-    Ancho int,
     Nome char(100),
+    Ancho int,
     Alto int,
     Id_Mapa char(9),
     foreign key (Id_Mapa) references Mapa(id)

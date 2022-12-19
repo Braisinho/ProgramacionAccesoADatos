@@ -1,7 +1,6 @@
 package ejercicio20;
 
-import java.sql.Array;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class CreadorBD {
                 ");";
         String zona ="create table Zona(\n" +
                 "    Id char(9),\n" +
-                "    Ancho int,\n" +
                 "    Nome char(100),\n" +
+                "    Ancho int,\n" +
                 "    Alto int,\n" +
                 "    Id_Mapa char(9),\n" +
                 "    foreign key (Id_Mapa) references Mapa(id)\n" +
