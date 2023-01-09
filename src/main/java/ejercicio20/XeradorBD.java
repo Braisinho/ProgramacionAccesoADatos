@@ -106,7 +106,6 @@ public class XeradorBD {
             for (int i = 0; i < 20; i++) {
                 for (int j = 0; j < (int)(Math.random()*MAX_NUM_ZONE+1); j++) {
                     try {
-
                         statement.setString(1, String.valueOf(count));
                         statement.setString(2, "Zona: " + count);
                         statement.setInt(3,(int)(Math.random()*250+1));
@@ -125,7 +124,6 @@ public class XeradorBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     private static void addCharacterBatch(){
