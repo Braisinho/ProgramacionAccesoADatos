@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ProgramacionSegundo" />
         <module name="Proyectos" />
         <module name="Proyectos AD" />
+        <module name="ProgramacionAccesoADatos" />
+        <module name="ProgramacionSegundo" />
       </profile>
     </annotationProcessing>
   </component>
