@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
         //CreadorBD.createTables();
         //XeradorBD.addDataBatch();
-        //ConnectionSQL.closeConecction();
+        DAO.consulta3(12);
+        ConnectionSQL.closeConecction();
 
     }
 }

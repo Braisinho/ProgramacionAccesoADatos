@@ -55,8 +55,7 @@ create table Zona(
  */
 SELECT
     u.Nome,
-    u.Id AS "ID Usuario",
-    COUNT(u.Id) AS "Numero de Persoaxes"
+    COUNT(u.Id) AS Numero_Persoaxe
 FROM
     persoaxe p
     JOIN usuario u ON u.Id = p.Id_Usuario
@@ -70,21 +69,22 @@ HAVING
  Preguntar Odilo
  */
 select
-    Nome,
-    Id as Numero
+    u.Nome,
+    COUNT(u.Nome) as Numero_Persoaxe
 from
-    persoaxe
+    persoaxe p
+    join usuario u on p.Id_Usuario = u.Id
 where
-    Id_Usuario = X;
+    Id_Usuario = 12;
 
 /*
  Os personaxes dun usuario X, devolvendo o nome do usuario, de cada personaxe e o servidor no que están.
  */
 select
-    p.Nome as "Nome Persoaxe",
-    p.Id as "Numero",
+    p.Nome as Nome_Persoaxe,
+    p.Id as Numero,
     p.Id_Servidor,
-    u.Nome as "Nome Usuario"
+    u.Nome as Nome_Usuario
 from
     persoaxe p
     JOIN usuario u ON u.Id = p.Id_Usuario
@@ -95,9 +95,9 @@ where
  O número de personaxes de cada usuario en cada servidor. Devolvendo o nome de usuario, número de personaxes e nome de servidor.
  */
 select
-    u.Nome as "Nome Usuario",
-    s.Nome as "Nome Servidor",
-    COUNT(p.Id) as "Numero de Personaxes"
+    u.Nome as Nome_Usuario,
+    s.Nome as Nome_Servidor,
+    COUNT(p.Id) as Numero_Personaxes
 from
     persoaxe p
     JOIN Servidor s on p.Id_Servidor = s.Id
@@ -121,28 +121,39 @@ order by
     COUNT(p.Id) desc
 limit
     3;
+
 /*
  O número de servidores de X rexión. 
  */
 select
     Rexion,
-    COUNT(Nome) as 'Numero Servidores'
+    COUNT(Nome) as Numero_Servidores
 from
     servidor
 where
     Rexion like 'EUW'
 GROUP by
     Rexion;
+
 /*
  O número de servidores de cada rexión.
  */
 select
     Rexion,
-    COUNT(Nome) as 'Numero Servidores'
+    COUNT(Nome) as Numero_Servidores
 from
     servidor
 GROUP by
     Rexion;
+
 /*
  As zonas dun mapa con id X, devolvendo o nome da zona, o alto e o ancho.
  */
+select
+    Nome,
+    Alto,
+    Ancho
+from
+    zona
+where
+    Id_Mapa = 5;

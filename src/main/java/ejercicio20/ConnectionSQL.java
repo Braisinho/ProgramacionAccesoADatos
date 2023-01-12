@@ -18,7 +18,6 @@ public class ConnectionSQL {
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
-
         return con;
     }
 
