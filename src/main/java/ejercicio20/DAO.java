@@ -112,7 +112,19 @@ public class DAO {
 
         try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
             while (rs.next()){
+                System.out.println(" __________________________________________________________");
+                System.out.println("| Nombre do Usuario | Nome do Servidor | Nº de Personaxes |");
+                while (rs.next()){
+                    if (rs.getString("Nome_Usuario").length() == 11){
+                        System.out.println("| " +rs.getString("Nome_Usuario") + "       |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes") +
+                                "                   |");
 
+                    }else{
+                        System.out.println("| " +rs.getString("Nome_Usuario") + "        |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes"));
+
+                    }
+                }
+                System.out.println(" __________________________________________________________");
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
