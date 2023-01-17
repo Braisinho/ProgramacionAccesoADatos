@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class DAO {
 
-    public static void consulta1(){
-        String consulta= "SELECT\n" +
+    public static void consulta1() {
+        String consulta = "SELECT\n" +
                 "    u.Nome,\n" +
                 "    COUNT(u.Id) AS Numero_Persoaxe\n" +
                 "FROM\n" +
@@ -19,24 +19,24 @@ public class DAO {
                 "HAVING\n" +
                 "    COUNT(u.Id) > 0;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
             System.out.println(" ___________________________________");
 
             System.out.println("| Nombre de Usuario | Nº Personajes |");
-            while (rs.next()){
-                if (rs.getString("u.Nome").length()==11){
-                    System.out.println("| "+rs.getString("u.Nome") + "       | " + rs.getInt("Numero_Persoaxe") + "             |");
-                }else{
-                    System.out.println("| "+rs.getString("u.Nome") + "        | " + rs.getInt("Numero_Persoaxe") +  "             |");
+            while (rs.next()) {
+                if (rs.getString("u.Nome").length() == 11) {
+                    System.out.println("| " + rs.getString("u.Nome") + "       | " + rs.getInt("Numero_Persoaxe") + "             |");
+                } else {
+                    System.out.println("| " + rs.getString("u.Nome") + "        | " + rs.getInt("Numero_Persoaxe") + "             |");
                 }
             }
             System.out.println(" ___________________________________");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta2(int x){
+    public static void consulta2(int x) {
         String consulta = "select\n" +
                 "    u.Nome,\n" +
                 "    COUNT(u.Nome) as Numero_Persoaxe\n" +
@@ -46,25 +46,26 @@ public class DAO {
                 "where\n" +
                 "    Id_Usuario = ?;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
-            statement.setInt(1,x);
-            ResultSet rs = statement.executeQuery();
-            System.out.println(" ___________________________________");
-            System.out.println("| Nombre de Usuario | Nº Personajes |");
-            while (rs.next()){
-                if (rs.getString("u.Nome").length()==11){
-                    System.out.println("| "+rs.getString("u.Nome") + "       | " + rs.getInt("Numero_Persoaxe") + "             |");
-                }else{
-                    System.out.println("| "+rs.getString("u.Nome") + "        | " + rs.getInt("Numero_Persoaxe") +  "             |");
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setInt(1, x);
+            try (ResultSet rs = statement.executeQuery()) {
+                System.out.println(" ___________________________________");
+                System.out.println("| Nombre de Usuario | Nº Personajes |");
+                while (rs.next()) {
+                    if (rs.getString("u.Nome").length() == 11) {
+                        System.out.println("| " + rs.getString("u.Nome") + "       | " + rs.getInt("Numero_Persoaxe") + "             |");
+                    } else {
+                        System.out.println("| " + rs.getString("u.Nome") + "        | " + rs.getInt("Numero_Persoaxe") + "             |");
+                    }
                 }
+                System.out.println(" ___________________________________");
             }
-            System.out.println(" ___________________________________");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta3(int x){
+    public static void consulta3(int x) {
         String consulta = "select\n" +
                 "    p.Nome as Nome_Persoaxe,\n" +
                 "    p.Id as Numero,\n" +
@@ -76,28 +77,29 @@ public class DAO {
                 "where\n" +
                 "    p.Id_Usuario = ?;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
-            statement.setInt(1,x);
-            ResultSet rs = statement.executeQuery();
-            System.out.println(" ___________________________________________________________________________");
-            System.out.println("| Nombre do Persoaxe | Nº do Persoaxe | Nº do Servidor | Nombre do Usuario |");
-            while (rs.next()){
-                if (rs.getString("Nome_Persoaxe").length() == 12){
-                    System.out.println("| " +rs.getString("Nome_Persoaxe") + "       |" + rs.getInt("Numero") + "              |" + rs.getInt("Id_Servidor")+
-                            "               |" + rs.getString("Nome_Usuario") + "        |");
-                }else{
-                    System.out.println("| " +rs.getString("Nome_Persoaxe") + "        |" + rs.getInt("Numero") + "               |" + rs.getInt("Id_Servidor")+
-                            "               |" + rs.getString("Nome_Usuario") +  "        |");
-                }
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setInt(1, x);
+            try (ResultSet rs = statement.executeQuery()) {
+                System.out.println(" ___________________________________________________________________________");
+                System.out.println("| Nombre do Persoaxe | Nº do Persoaxe | Nº do Servidor | Nombre do Usuario |");
+                while (rs.next()) {
+                    if (rs.getString("Nome_Persoaxe").length() == 12) {
+                        System.out.println("| " + rs.getString("Nome_Persoaxe") + "       |" + rs.getInt("Numero") + "              |" + rs.getInt("Id_Servidor") +
+                                "               |" + rs.getString("Nome_Usuario") + "        |");
+                    } else {
+                        System.out.println("| " + rs.getString("Nome_Persoaxe") + "        |" + rs.getInt("Numero") + "               |" + rs.getInt("Id_Servidor") +
+                                "               |" + rs.getString("Nome_Usuario") + "        |");
+                    }
 
+                }
+                System.out.println(" ___________________________________________________________________________");
             }
-            System.out.println(" ___________________________________________________________________________");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta4(){
+    public static void consulta4() {
         String consulta = "select\n" +
                 "    u.Nome as Nome_Usuario,\n" +
                 "    s.Nome as Nome_Servidor,\n" +
@@ -110,28 +112,28 @@ public class DAO {
                 "    s.Nome,\n" +
                 "    u.Nome;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
                 System.out.println(" __________________________________________________________");
                 System.out.println("| Nombre do Usuario | Nome do Servidor | Nº de Personaxes |");
-                while (rs.next()){
-                    if (rs.getString("Nome_Usuario").length() == 11){
-                        System.out.println("| " +rs.getString("Nome_Usuario") + "       |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes") +
+                while (rs.next()) {
+                    if (rs.getString("Nome_Usuario").length() == 11) {
+                        System.out.println("| " + rs.getString("Nome_Usuario") + "       |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes") +
                                 "                   |");
 
-                    }else{
-                        System.out.println("| " +rs.getString("Nome_Usuario") + "        |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes"));
+                    } else {
+                        System.out.println("| " + rs.getString("Nome_Usuario") + "        |" + rs.getString("Nome_Servidor") + "       |" + rs.getInt("Numero_Personaxes"));
 
                     }
                 }
                 System.out.println(" __________________________________________________________");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta5(){
+    public static void consulta5(int x) {
         String consulta = "select\n" +
                 "    s.Nome,\n" +
                 "    COUNT(p.Id)\n" +
@@ -145,36 +147,48 @@ public class DAO {
                 "limit\n" +
                 "    ?;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
-
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setInt(1, x);
+            try (ResultSet rs = statement.executeQuery()) {
+                System.out.println(" ___________________________________________");
+                System.out.println("| Nombre do Servidor | Numero de Persoaxes |");
+                while (rs.next()) {
+                    System.out.println("| " + rs.getString("s.Nome") + "        |  " + rs.getInt("COUNT(p.Id)") + "                 |");
+                }
+                System.out.println(" ___________________________________________");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta6(){
+    public static void consulta6(String rex) {
         String consulta = "select\n" +
                 "    Rexion,\n" +
                 "    COUNT(Nome) as Numero_Servidores\n" +
                 "from\n" +
                 "    servidor\n" +
                 "where\n" +
-                "    Rexion like 'EUW'\n" +
+                "    Rexion like ?\n" +
                 "GROUP by\n" +
                 "    Rexion;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
-
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setString(1, rex);
+            try (ResultSet rs = statement.executeQuery()) {
+                System.out.println(" ___________________________________________");
+                System.out.println("| Nombre da Rexion | Numero de Servidores |");
+                while (rs.next()) {
+                    System.out.println("| " + rs.getString("Rexion") + "              |  " + rs.getInt("Numero_Servidores") + "                   |");
+                }
+                System.out.println(" ___________________________________________");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta7(){
+    public static void consulta7() {
         String consulta = "select\n" +
                 "    Rexion,\n" +
                 "    COUNT(Nome) as Numero_Servidores\n" +
@@ -183,16 +197,25 @@ public class DAO {
                 "GROUP by\n" +
                 "    Rexion;\n";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
+            System.out.println(" ___________________________________________");
+            System.out.println("| Nombre da Rexion | Numero de Servidores |");
+            while (rs.next()) {
+                if (rs.getString("Rexion").length() == 3) {
+                    System.out.println("| " + rs.getString("Rexion") + "              |  " + rs.getInt("Numero_Servidores") + "                   |");
 
+                } else {
+                    System.out.println("| " + rs.getString("Rexion") + "               |  " + rs.getInt("Numero_Servidores") + "                   |");
+
+                }
             }
-        }catch (SQLException e) {
+            System.out.println(" ___________________________________________");
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void consulta8(){
+    public static void consulta8(int id) {
         String consulta = "select\n" +
                 "    Nome,\n" +
                 "    Alto,\n" +
@@ -202,11 +225,14 @@ public class DAO {
                 "where\n" +
                 "    Id_Mapa = ?;";
 
-        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
-
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setInt(1, id);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println("Nome: " + rs.getString("Nome") + "  Alto: " + rs.getInt("Alto") + "  Ancho: " + rs.getInt("Ancho"));
+                }
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
