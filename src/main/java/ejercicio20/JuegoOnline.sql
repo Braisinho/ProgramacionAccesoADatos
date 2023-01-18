@@ -157,3 +157,60 @@ from
     zona
 where
     Id_Mapa = 5;
+
+/*
+ rankServers() que mostre por pantalla os 5 servidores con máis personaxes da forma "O servidor X ten Y personaxes".
+ */
+select
+    s.Nome,
+    COUNT(p.Id)
+from
+    persoaxe p
+    join servidor s on p.Id_Servidor = s.Id
+GROUP by
+    s.Nome
+order by
+    COUNT(p.Id) desc
+limit
+    5;
+
+/*
+ listServers() que mostre o nome dos servidores por rexión coa forma:
+ Rexión X
+ Servidor1
+ Servidor2
+ Rexión Y
+ Servidor3
+ */
+select
+    Nome,
+    Rexion
+from
+    servidor
+order by
+    Rexion,
+    Nome;
+
+/*getUserPJ(id) que mostre por pantalla o número de personaxes dun usuario en concreto, o número de personaxes por servidor e seus nomes da seguinte forma:
+ X (Y personaxes)
+    Servidor1
+        pj1
+    Servidor3
+        pj2
+        pj3
+ */
+
+select
+    Id_Servidor,
+    Nome
+from
+    persoaxe
+where 
+    Id_Usuario = 5;
+
+select
+    COUNT(Nome)
+from
+    persoaxe
+where 
+    Id_Usuario = 5;
