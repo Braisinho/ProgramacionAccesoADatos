@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         //CreadorBD.createTables();
         //XeradorBD.addDataBatch();
-        AnaliseBD.listServers();
+        AnaliseBD.getUserPJ(5);
         ConnectionSQL.closeConecction();
 
     }

@@ -3,7 +3,9 @@ package ejercicio20;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Hashtable;
 
 public class AnaliseBD {
 
@@ -79,19 +81,35 @@ public class AnaliseBD {
                 pj3
     */
     public static void getUserPJ(int id) {
+        ArrayList<Integer> servidores = new ArrayList<>();
+        ArrayList<String> perxonaxes = new ArrayList<>();
+        HashSet<Integer> sett = new HashSet<>();
+
+        int count = 0;
         String consulta ="select\n" +
-                "    s.Nome,\n" +
-                "    p.Nome\n" +
+                "    Id_Servidor,\n" +
+                "    Nome\n" +
                 "from\n" +
-                "    persoaxe p\n" +
-                "    join Servidor s on p.Id_Servidor = s.Id\n" +
+                "    persoaxe\n" +
                 "where \n" +
                 "    Id_Usuario = ?";
+
         try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)){
             statement.setInt(1,id);
             try(ResultSet rs = statement.executeQuery()) {
                 while (rs.next()){
-                    rs.getString("");
+                    count++;
+                    servidores.add(rs.getInt("Id_Servidor"));
+                    perxonaxes.add(rs.getString("Nome"));
+                }
+
+                System.out.println("Usuario " + id + " ("+count+" personaxes)");
+
+                for (int i = 0; i < servidores.size(); i++) {
+                    if (sett.add(servidores.get(i))){
+                        System.out.println("\tServidor " + servidores.get(i));
+                    }
+                    System.out.println("\t\t" + perxonaxes.get(i));
                 }
             }
 

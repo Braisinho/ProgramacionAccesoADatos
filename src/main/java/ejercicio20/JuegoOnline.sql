@@ -207,10 +207,3 @@ from
     persoaxe
 where 
     Id_Usuario = 5;
-
-select
-    COUNT(Nome)
-from
-    persoaxe
-where 
-    Id_Usuario = 5;
