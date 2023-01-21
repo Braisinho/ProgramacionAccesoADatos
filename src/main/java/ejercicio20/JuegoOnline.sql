@@ -207,3 +207,22 @@ from
     persoaxe
 where 
     Id_Usuario = 5;
+
+/*
+ userPJs() que mostre por pantalla todos os usuarios e o 
+ número de personaxes que ten. Mostra 5 por liña co número entre parénteses.
+*/    
+select
+    u.Nome,
+    COUNT(u.Nome) as Nº_de_Persoaxes
+from
+    persoaxe p 
+    join usuario u on p.Id_Usuario = u.Id
+ GROUP by
+    u.Nome   
+order by
+    u.nome;    
+
+/*
+areaMap(id) que mostre o área dun mapa cun id en concreto. (área = ancho x alto)*/
+*/

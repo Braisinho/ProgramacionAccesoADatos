@@ -120,11 +120,49 @@ public class AnaliseBD {
 
     //userPJs() que mostre por pantalla todos os usuarios e o número de personaxes que ten. Mostra 5 por liña co número entre parénteses.
     public static void userPJs(){
-
+        int count = 0;
+        String consulta ="select\n" +
+                "    u.Nome,\n" +
+                "    COUNT(u.Nome) as Nº_de_Persoaxes\n" +
+                "from\n" +
+                "    persoaxe p \n" +
+                "    join usuario u on p.Id_Usuario = u.Id\n" +
+                " GROUP by\n" +
+                "    u.Nome   \n" +
+                "order by\n" +
+                "    u.nome;";
+        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()) {
+            while (rs.next()){
+                if (count % 5 == 0 && count != 0){
+                    System.out.println();
+                }
+                System.out.print(rs.getString("u.Nome") + " ("+rs.getInt("Nº_de_Persoaxes")+")\t");
+                count++;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //areaMap(id) que mostre o área dun mapa cun id en concreto. (área = ancho x alto)
     public static void areaMap(int id){
+        int area = 0;
+        String consulta ="select \n" +
+                "    Ancho, \n" +
+                "    Alto\n" +
+                "from zona\n" +
+                "where Id_Mapa = ?";
 
+        try(PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)) {
+            statement.setInt(1,id);
+            try(ResultSet rs = statement.executeQuery()) {
+                while (rs.next()){
+                    area += rs.getInt("Ancho") * rs.getInt("Alto");
+                }
+            }
+            System.out.println("El area del mapa " + id +" es: " + area);
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }
