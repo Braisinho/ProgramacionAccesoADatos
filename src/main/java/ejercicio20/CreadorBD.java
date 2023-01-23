@@ -7,17 +7,17 @@ import java.util.ArrayList;
 
 public class CreadorBD {
 
-    public static void createTables(){
+    //Este metodo se encarga de crear las tablas, recorriendo una lista de Strings donde estan las sentencias de creacion de las mismas.
+    public static void createTables() throws SQLException {
         ArrayList<String> tables = createStringsTables();
         for (String table : tables) {
             try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(table)) {
                 statement.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
     }
 
+    //Este metodo se encarga de rellenar la lista con las sentencias de creacion.
     private static ArrayList<String> createStringsTables(){
         String usuario ="create table Usuario(\n" +
                 "    Id char(9),\n" +

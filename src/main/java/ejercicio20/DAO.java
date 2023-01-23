@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class DAO {
 
+    //O número de personaxes por usuario, devolvendo o nome de usuario e o número de personaxes sempre que o número sexa igual ou maior que 1.
     public static void consulta1() {
         String consulta = "SELECT\n" +
                 "    u.Nome,\n" +
@@ -36,6 +37,7 @@ public class DAO {
         }
     }
 
+    //O número de personaxes dun usuario X, devolvendo seu nome e número.
     public static void consulta2(int x) {
         String consulta = "select\n" +
                 "    u.Nome,\n" +
@@ -65,6 +67,7 @@ public class DAO {
         }
     }
 
+    //Os personaxes dun usuario X, devolvendo o nome do usuario, de cada personaxe e o servidor no que están.
     public static void consulta3(int x) {
         String consulta = "select\n" +
                 "    p.Nome as Nome_Persoaxe,\n" +
@@ -99,6 +102,7 @@ public class DAO {
         }
     }
 
+    //O número de personaxes de cada usuario en cada servidor. Devolvendo o nome de usuario, número de personaxes e nome de servidor.
     public static void consulta4() {
         String consulta = "select\n" +
                 "    u.Nome as Nome_Usuario,\n" +
@@ -133,6 +137,7 @@ public class DAO {
         }
     }
 
+    //Os X servidores con máis personaxes ordenados de maior a menor, devolvendo o nome e o número. X é o parámetro que determina o número a delimitar, por exemplo os 3 con máis.
     public static void consulta5(int x) {
         String consulta = "select\n" +
                 "    s.Nome,\n" +
@@ -162,6 +167,7 @@ public class DAO {
         }
     }
 
+    //O número de servidores de X rexión.
     public static void consulta6(String rex) {
         String consulta = "select\n" +
                 "    Rexion,\n" +
@@ -188,6 +194,7 @@ public class DAO {
         }
     }
 
+    //O número de servidores de cada rexión.
     public static void consulta7() {
         String consulta = "select\n" +
                 "    Rexion,\n" +
@@ -215,6 +222,7 @@ public class DAO {
         }
     }
 
+    //As zonas dun mapa con id X, devolvendo o nome da zona, o alto e o ancho.
     public static void consulta8(int id) {
         String consulta = "select\n" +
                 "    Nome,\n" +
