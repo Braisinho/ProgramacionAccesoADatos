@@ -1,0 +1,104 @@
+1-Nome de bailes que se realizan na sala número 4.
+
+    for $baile in doc("db/Documentos/bailes")//baile
+    where $baile/sala = 4
+        return $baile/nome_baile/text()
+
+
+2-Nome de bailes que se realizan na sala número 4 con menos de 20 prazas.
+
+    for $baile in doc("db/Documentos/bailes")//baile
+    where $baile/sala = 4 and $baile/prazas <20
+        return $baile/nome_baile/text()
+
+3-Nodos co nome de profesores que dan clases de cursos con pago mensual.
+
+    for $baile in doc("db/Documentos/bailes")//baile
+    where $baile/prezo/@pago = "mensual"
+        return $baile/nome_profesor
+
+4-Importe total que se recadará por curso se os cursos están completos. 
+Por exemplo, a etiqueta total terá o atributo curso co nome do baile e o seu contido será o importe (prazas x prezo). 
+
+    for $baile in doc("db/Documentos/bailes")//baile
+        return <total curso = "{$baile/nome_baile}"> {$baile/prezo * $baile/prazas} </total>
+
+5-Importe total da academia (todo o documento) se os cursos están completos
+
+    fn:sum(for $baile in doc("db/Documentos/bailes")//baile
+        return $baile/prezo * $baile/prazas)
+
+6-Nome dos cursos relacionados con baile galego
+
+    for $baile in doc("db/Documentos/bailes")//baile
+    where (contains($baile/nome_baile, "galego"))
+        return $baile/nome_baile/text()
+
+7- Nome de cursos relacionados con baile tradicional 
+(debe atopar a palabra “tradicional” da igual se está escrita en maiúsculas ou non)     
+
+    for $baile in doc("db/Documentos/bailes")//baile
+    where (contains(lower-case($baile/nome_baile), "tradicional"))
+        return $baile/nome_baile/text()
+
+
+8-Suma de prazas de cursos relacionados con baile galego
+
+    fn:sum(
+        for $baile in doc("db/Documentos/bailes")//baile
+        where(contains($baile/nome_baile, "galego"))
+            return $baile/prazas
+    ) 
+
+9-Media de prazas en toda a academia  (todo o documeto)
+
+    fn:avg(
+        for $baile in doc("db/Documentos/bailes")//baile
+            return $baile/prazas
+    )
+
+10-Número correspondente ao mes de comezo de cada curso. Por exemplo coa forma da etiqueta
+mes_inicio co atributo curso co nome do baile e como contido o número do mes de inicio
+
+    for $baile in doc("db/Documentos/bailes")//baile
+        return <mes_inicio curso = "{$baile/nome_baile}"> {substring($baile/data_inicio/text(), 6,2)} </mes_inicio
+
+11-A mesma consulta coa mesma forma de resultado que o exercicio anterior 
+pero en lugar do número do mes ten que aparecer o nome do mes
+
+    let $meses := ("Enero", "Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+
+    for $baile in doc("db/Documentos/bailes")//baile
+        return <mes_inicio curso = "{$baile/nome_baile}"> {$meses[xs:integer(substring($baile/data_inicio/text(), 6,2))]} </mes_inicio> 
+    
+12-Táboa HTML que mostre o nome do baile, o nome do profesor que o imparte e o número de prazas ofertadas. 
+Gravar o resultado no arquivo bailes.html fóra da colección bailes, 
+subir ao servidor web local e ver no navegador.
+
+    <html>
+        <head>
+            <title>
+                Datos Bailes.
+            </title>
+        </head>
+        <body>
+            <table border="1">
+                <tr>
+                    <th>Nome do baile.</th>
+                    <th>Nome do profesor.</th>
+                    <th>Nº Prazas.</th>
+                </tr>
+                {
+                    for $baile in doc("db/Documentos/bailes")//baile
+                    return <tr>
+                                <td>{$baile/nome_baile}</td>
+                                <td>{$baile/nome_profesor}</td>
+                                <td>{$baile/prazas}</td>
+                        </tr>
+                }
+            </table>
+        </body>
+    </html>
+
+    
+

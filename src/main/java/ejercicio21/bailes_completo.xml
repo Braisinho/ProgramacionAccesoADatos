@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bailes xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='bailes.xsd' academia="Danzaríns">
+    <baile id="10">
+        <nome_baile>Tradicional galego avanzado</nome_baile>
+        <prezo pago="anual" moeda="euro">600</prezo>
+        <prazas>25</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>Teresa López Castro</nome_profesor>
+        <sala>1</sala>
+    </baile>
+    <baile id="20">
+        <nome_baile>Tango</nome_baile>
+        <prezo pago="trimestral" moeda="euro">30</prezo>
+        <prazas>20</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-03-31</data_fin>
+        <nome_profesor>María Somoza Pardiñas</nome_profesor>
+        <sala>4</sala>
+    </baile>
+    <baile id="30">
+        <nome_baile>Merengue</nome_baile>
+        <prezo pago="trimestral" moeda="euro">30</prezo>
+        <prazas>12</prazas>
+        <data_inicio>2016-04-01</data_inicio>
+        <data_fin>2016-06-30</data_fin>
+        <nome_profesor>Mario Suárez Cota</nome_profesor>
+        <sala>4</sala>
+    </baile>
+    <baile id="40">
+        <nome_baile>Rock</nome_baile>
+        <prezo pago="mensual" moeda="euro">30</prezo>
+        <prazas>25</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>José Cruz Castro</nome_profesor>
+        <sala>6</sala>
+    </baile>
+    <baile id="50">
+        <nome_baile>Salsa</nome_baile>
+        <prezo pago="trimestral" moeda="euro">30</prezo>
+        <prazas>12</prazas>
+        <data_inicio>2016-07-01</data_inicio>
+        <data_fin>2016-09-30</data_fin>
+        <nome_profesor>Laura Díaz Varela</nome_profesor>
+        <sala>4</sala>
+    </baile>
+    <baile id="60">
+        <nome_baile>Cha-cha-cha</nome_baile>
+        <prezo pago="trimestral" moeda="euro">30</prezo>
+        <prazas>12</prazas>
+        <data_inicio>2016-10-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>Pedro Molina Astrada</nome_profesor>
+        <sala>4</sala>
+    </baile>
+    <baile id="70">
+        <nome_baile>Tradicional galego iniciación</nome_baile>
+        <prezo pago="mensual" moeda="euro">25</prezo>
+        <prazas>25</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>Mercedes Fernández Pol</nome_profesor>
+        <sala>3</sala>
+    </baile>
+    <baile id="80">
+        <nome_baile>Pasodoble</nome_baile>
+        <prezo pago="trimestral" moeda="euro">30</prezo>
+        <prazas>12</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>Lázaro Vila Vila</nome_profesor>
+        <sala>5</sala>
+    </baile>
+    <baile id="90">
+        <nome_baile>Tradicional galego medio</nome_baile>
+        <prezo pago="mensual" moeda="euro">50</prezo>
+        <prazas>25</prazas>
+        <data_inicio>2016-01-01</data_inicio>
+        <data_fin>2016-12-31</data_fin>
+        <nome_profesor>Casimiro Rodríguez Leivas</nome_profesor>
+        <sala>2</sala>
+    </baile>
+</bailes>
