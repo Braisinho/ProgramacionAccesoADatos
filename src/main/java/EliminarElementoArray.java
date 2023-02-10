@@ -4,8 +4,6 @@ public class EliminarElementoArray {
     public static void main(String[] args) {
         int [] a = new int[]{0,1,2,3,4,5,6,6,7};
         int [] b = removeElement(a,8);
-        ArrayList<Integer> a2 = new ArrayList<>();
-        a2.remove(4);
 
         for (int c:
              b) {
