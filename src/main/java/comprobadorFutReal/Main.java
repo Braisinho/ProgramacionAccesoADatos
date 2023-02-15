@@ -10,7 +10,7 @@ public class Main {
         //String pattern = "dd-MM-yyyy";
         //SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         LocalDate fecha = LocalDate.of(2023, 10, 23);
-        String psw = "123456789100aAr+";
+        String psw = "12345678910aAr+";
         String psw2 = "23101999BraisFerro+";
         Persona a = null;
         try {

@@ -46,26 +46,13 @@ public class Persona {
 
     public void setPassword(String password) throws PasswordException {
 
-        boolean mayus = false;
-        boolean minus = false;
-        boolean number = false;
-        boolean simbols = false;
-
         if (password.length() < 9) throw new PasswordException("El tamaño de la contraseña es demasiado pequeño");
-        if (password.contains(String.valueOf(fechaNacimiento.getYear())) || password.contains(String.valueOf(fechaNacimiento.getMonthValue()))) throw new PasswordException("No se puede incluir la fecha de nacimieto en la contraseña.");
+        if (password.contains(String.valueOf(fechaNacimiento.getYear())) || password.contains(String.valueOf(fechaNacimiento.getMonthValue())) || password.contains(fechaNacimiento.getMonth().toString())) throw new PasswordException("No se puede incluir la fecha de nacimieto en la contraseña.");
         if (password.contains(nombre) || password.contains(apellido)) throw new PasswordException("No se puede incluir el nombre o el apellido en la contraseña.");
-
-        for (char c: password.toCharArray()) {
-            if (Character.isDigit(c)) number = true;
-            if (Character.isLowerCase(c)) minus = true;
-            if (Character.isUpperCase(c)) mayus = true;
-            if (!Character.isLetterOrDigit(c)) simbols = true;
-        }
-
-        if (!number) throw new PasswordException("Se necesita tener como minimo un numero.");
-        if (!minus) throw new PasswordException("Se necesita tener como minimo una letra minuscula.");
-        if (!mayus) throw new PasswordException("Se necesita tener como minimo una letra mayuscula.");
-        if (!simbols) throw new PasswordException("Se necesita tener como minimo un simbolo especial.");
+        if (!password.matches(".*\\d+.*")) throw new PasswordException("Se necesita tener como minimo un numero.");
+        if (!password.matches(".*[a-z].*")) throw new PasswordException("Se necesita tener como minimo una letra minuscula.");
+        if (!password.matches(".*[A-Z].*"))throw new PasswordException("Se necesita tener como minimo una letra mayuscula.");
+        if (!password.matches(".*[^a-zA-Z0-9].*")) throw new PasswordException("Se necesita tener como minimo un simbolo especial.");
 
         this.password = password;
     }
