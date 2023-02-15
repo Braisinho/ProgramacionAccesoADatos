@@ -1,15 +1,15 @@
 package comprobadorFutReal;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Persona {
 
     private String nombre;
     private String apellido;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String password;
 
-    public Persona(String nombre, String apellido, Date fechaNacimiento, String password) throws PasswordException {
+    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String password) throws PasswordException {
         setApellido(apellido);
         setNombre(nombre);
         setFechaNacimiento(fechaNacimiento);
@@ -24,11 +24,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -52,7 +52,7 @@ public class Persona {
         boolean simbols = false;
 
         if (password.length() < 9) throw new PasswordException("El tamaño de la contraseña es demasiado pequeño");
-        if (password.contains(fechaNacimiento.toString().split(" ")[5]) || password.contains(fechaNacimiento.toString().split(" ")[2])) throw new PasswordException("No se puede incluir la fecha de nacimineto en la contraseña.");
+        if (password.contains(String.valueOf(fechaNacimiento.getYear())) || password.contains(String.valueOf(fechaNacimiento.getMonthValue()))) throw new PasswordException("No se puede incluir la fecha de nacimieto en la contraseña.");
         if (password.contains(nombre) || password.contains(apellido)) throw new PasswordException("No se puede incluir el nombre o el apellido en la contraseña.");
 
         for (char c: password.toCharArray()) {
