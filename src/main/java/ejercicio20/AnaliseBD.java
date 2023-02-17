@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 
+import static java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE;
+
 public class AnaliseBD {
 
     //rankServers() que mostre por pantalla os 5 servidores con máis personaxes da forma "O servidor X ten Y personaxes".
@@ -57,11 +59,11 @@ public class AnaliseBD {
         try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta); ResultSet rs = statement.executeQuery()){
             while (rs.next()){
                 if (rs.getString("Rexion").equals("EUW")){
-                    rexion1.append("\t"+rs.getString("Nome") + " \n");
+                    rexion1.append("\t").append(rs.getString("Nome")).append(" \n");
                 } else if (rs.getString("Rexion").equals("KR")) {
-                    rexion2.append("\t"+rs.getString("Nome") + " \n");
+                    rexion2.append("\t").append(rs.getString("Nome")).append(" \n");
                 }else{
-                    rexion3.append("\t"+rs.getString("Nome") + " \n");
+                    rexion3.append("\t").append(rs.getString("Nome")).append(" \n");
                 }
             }
             System.out.println(rexion1);
@@ -80,12 +82,10 @@ public class AnaliseBD {
                 pj2
                 pj3
     */
-    public static void getUserPJ(int id) {
-        ArrayList<Integer> servidores = new ArrayList<>();
-        ArrayList<String> perxonaxes = new ArrayList<>();
-        HashSet<Integer> sett = new HashSet<>();
 
-        int count = 0;
+    public static void getUserPJ(int id) {
+        HashSet<Integer> server = new HashSet<>();
+
         String consulta ="select\n" +
                 "    Id_Servidor,\n" +
                 "    Nome\n" +
@@ -94,23 +94,20 @@ public class AnaliseBD {
                 "where \n" +
                 "    Id_Usuario = ?";
 
-        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta)){
+        try (PreparedStatement statement = ConnectionSQL.CONN.prepareStatement(consulta,TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY)){
             statement.setInt(1,id);
             try(ResultSet rs = statement.executeQuery()) {
+                rs.last();
+                int numPJ = rs.getRow();
+                rs.beforeFirst();
+                System.out.println("Usuario: " + id + " (" +numPJ + " Personajes)");
                 while (rs.next()){
-                    count++;
-                    servidores.add(rs.getInt("Id_Servidor"));
-                    perxonaxes.add(rs.getString("Nome"));
-                }
-
-                System.out.println("Usuario " + id + " ("+count+" personaxes)");
-
-                for (int i = 0; i < servidores.size(); i++) {
-                    if (sett.add(servidores.get(i))){
-                        System.out.println("\tServidor " + servidores.get(i));
+                    if (server.add(rs.getInt("Id_Servidor"))){
+                        System.out.println("Servidor : " + rs.getInt("Id_Servidor"));
                     }
-                    System.out.println("\t\t" + perxonaxes.get(i));
+                    System.out.println("\t" + rs.getString("Nome"));
                 }
+
             }
 
         }catch (SQLException e){
