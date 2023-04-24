@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Proyectos" />
         <module name="Proyectos AD" />
-        <module name="ProgramacionAccesoADatos" />
         <module name="ProgramacionSegundo" />
       </profile>
     </annotationProcessing>

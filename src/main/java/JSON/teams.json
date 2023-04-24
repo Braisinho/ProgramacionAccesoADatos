@@ -1,0 +1,181 @@
+[
+    {
+        "id": "2101",
+        "name": "PRAIÑA SPORTING CLUB",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2102",
+        "name": "BERTAMIRANS F.C.",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2103",
+        "name": "S.D. VALIÑO",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2104",
+        "name": "S.D.URDILDE",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2105",
+        "name": "C.C.D. TARAGOÑA",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2106",
+        "name": "BASTAVALES U.D.",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2107",
+        "name": "S.D. LUAÑA",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2108",
+        "name": "AGRON-BARCALA CLUB DE FÚTBOL",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2109",
+        "name": "S.D. ESCLAVITUD",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2110",
+        "name": "SPORTING LAMPON",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2111",
+        "name": "C.D. DODRO",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2112",
+        "name": "A.D. NICRARIENSE",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2123",
+        "name": "LESENDE C.F. CONCELLO DE LOUSAME",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2114",
+        "name": "C.D. GALICIA BEALO",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2115",
+        "name": "ATLETICO OLEIROS",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2116",
+        "name": "U.D. QUEIRUGA",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2117",
+        "name": "S.D CARCACIA",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    },
+
+    {
+        "id": "2118",
+        "name": "MILLADOIRO S.D.",
+        "league":{
+            "id": "21",
+            "name":"Segunda Regional Grupo 1"
+        }
+
+    }
+]
